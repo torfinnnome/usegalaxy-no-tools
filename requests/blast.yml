@@ -1,0 +1,4 @@
+tools:
+- name: ncbi_blast_plus
+  owner: devteam
+  tool_panel_section_label: Blast +
