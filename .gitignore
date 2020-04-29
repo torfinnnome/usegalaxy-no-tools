@@ -4,3 +4,4 @@ cat-dev
 .secret.env
 tmp
 var
+.vscode

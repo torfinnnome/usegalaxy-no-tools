@@ -1,8 +1,8 @@
-## usegalaxy-au-tools
+## usegalaxy-no-tools
 
-This repository consists of .yml files or tools installed on Galaxy Australia and scripts for Travis CI and and Jenkins automated tool installation process.  The .yml files are maintained by the Jenkins process and should not be edited directly.
+This repository consists of .yml files or tools installed on Galaxy Norway and scripts for Travis CI and and Jenkins automated tool installation process.  The .yml files are maintained by the Jenkins process and should not be edited directly.
 
-### Requesting a tool on Galaxy Australia
+### Requesting a tool on Galaxy Norway
 
 1. Make a fork of this repository.
 2. On a branch, create one or more yaml files within the 'requests' directory in the following format:
