@@ -39,8 +39,8 @@ tools:
 - name: data_manager_fetch_genome_dbkeys_all_fasta
   owner: devteam
   revisions:
-  - b1bc53e9bbc5
   - 4d3eff1bc421
+  - b1bc53e9bbc5
   tool_panel_section_id: None
   tool_panel_section_label: None
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -57,6 +57,7 @@ tools:
   - f57426daa04d
   - 172815da3d41
   - b4b2b284230a
+  - 172815da3d41
   tool_panel_section_id: None
   tool_panel_section_label: None
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -65,6 +66,16 @@ tools:
   revisions:
   - 8eac26f44d29
   - d210e1f185bd
+<<<<<<< HEAD
+=======
+  tool_panel_section_id: None
+  tool_panel_section_label: None
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: data_manager_humann2_database_downloader
+  owner: iuc
+  revisions:
+  - 9244804f69a7
+>>>>>>> upstream/master
   tool_panel_section_id: None
   tool_panel_section_label: None
   tool_shed_url: toolshed.g2.bx.psu.edu

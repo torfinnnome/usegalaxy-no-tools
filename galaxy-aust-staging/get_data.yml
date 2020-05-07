@@ -10,6 +10,10 @@ tools:
   owner: iuc
   revisions:
   - f5ea3ce9b9b0
+<<<<<<< HEAD
+=======
+  - c441583adae5
+>>>>>>> upstream/master
   - aad3885b3216
   tool_panel_section_id: getext
   tool_panel_section_label: Get Data
