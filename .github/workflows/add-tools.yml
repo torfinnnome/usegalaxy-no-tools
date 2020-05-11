@@ -29,6 +29,7 @@ jobs:
       env:
         PRODUCTION_API_KEY: ${{ secrets.PRODUCTION_API_KEY }}
         STAGING_API_KEY: ${{ secrets.STAGING_API_KEY }}
+        GHA_DEPLOY_KEY: ${{ secrets.GHA_DEPLOY_KEY }}
       run: |
         pwd
         ls -l
