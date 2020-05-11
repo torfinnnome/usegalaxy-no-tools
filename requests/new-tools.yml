@@ -1,0 +1,4 @@
+tools:
+  - name: clustalw
+    owner: devteam
+    tool_panel_section_label: Multiple Alignments
