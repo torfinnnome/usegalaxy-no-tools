@@ -1,0 +1,4 @@
+tools:
+- name: fastq_filter
+  owner: devteam
+  tool_panel_section_label: FASTA/FASTQ

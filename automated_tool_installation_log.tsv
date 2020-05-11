@@ -678,3 +678,12 @@ Install	272	08/05/20 18:16:07	salmon	False	Installed	bgruening	e3d32471da11	e3d3
 Install	274	11/05/20 10:38:27	ggplot2_point	True	Installed	iuc	87908c76ca8d	latest		1/1	1/1	Graph/Display Data	toolshed.g2.bx.psu.edu	/var/lib/jenkins/galaxy_tool_automation/install_build_274/install_log.txt
 Install	274	11/05/20 11:03:14	sklearn_numeric_clustering	True	Installed	bgruening	1dd433d2c92c	latest		21/21	21/21	Statistics	toolshed.g2.bx.psu.edu	/var/lib/jenkins/galaxy_tool_automation/install_build_274/install_log.txt
 >>>>>>> upstream/master
+Install	local_20200511114559	11/05/20 19:46:07	ncbi_blast_plus		Shed-tools error	devteam		latest	Staging Installation			NCBI Blast	toolshed.g2.bx.psu.edu	logs/install_build_local_20200511114559/install_log.txt
+Install	local_20200511114810	11/05/20 19:53:01	ncbi_blast_plus		Tests failed	devteam	2889433c7ae1	latest	Staging Testing	0/62		NCBI Blast	toolshed.g2.bx.psu.edu	logs/install_build_local_20200511114810/install_log.txt
+Install	local_20200511120356	11/05/20 20:04:39	ncbi_blast_plus		Shed-tools error	devteam		latest	Staging Installation			NCBI Blast	toolshed.g2.bx.psu.edu	logs/install_build_local_20200511120356/install_log.txt
+Install	local_20200511121010	11/05/20 20:13:09	ncbi_blast_plus		Tests failed	devteam	2889433c7ae1	latest	Staging Testing	0/62		NCBI Blast	toolshed.g2.bx.psu.edu	logs/install_build_local_20200511121010/install_log.txt
+Install	local_20200511122926	11/05/20 20:34:15	fastp		Tests failed	iuc	dbf9c561ef29	latest	Staging Testing	10/11		FASTA/FASTQ	toolshed.g2.bx.psu.edu	logs/install_build_local_20200511122926/install_log.txt
+Install	local_20200511124543	11/05/20 20:45:50	fastq_filter	False	Already Installed	devteam	81a9090d6df3	latest	Production Installation			FASTA/FASTQ	toolshed.g2.bx.psu.edu	logs/install_build_local_20200511124543/install_log.txt
+Install	local_20200511124919	11/05/20 20:49:27	fastq_filter	False	Already Installed	devteam	81a9090d6df3	latest	Production Installation			FASTA/FASTQ	toolshed.g2.bx.psu.edu	logs/install_build_local_20200511124919/install_log.txt
+Install	local_20200511125547	11/05/20 20:55:54	fastq_filter	False	Already Installed	devteam	81a9090d6df3	latest	Production Installation			FASTA/FASTQ	toolshed.g2.bx.psu.edu	logs/install_build_local_20200511125547/install_log.txt
+Install	local_20200511125616	11/05/20 20:56:23	fastq_filter	False	Already Installed	devteam	81a9090d6df3	latest	Production Installation			FASTA/FASTQ	toolshed.g2.bx.psu.edu	logs/install_build_local_20200511125616/install_log.txt

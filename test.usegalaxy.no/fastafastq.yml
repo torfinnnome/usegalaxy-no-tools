@@ -1,0 +1,8 @@
+tools:
+- name: fastq_filter
+  owner: devteam
+  revisions:
+  - 81a9090d6df3
+  tool_panel_section_id: fasta/fastq
+  tool_panel_section_label: FASTA/FASTQ
+  tool_shed_url: toolshed.g2.bx.psu.edu
