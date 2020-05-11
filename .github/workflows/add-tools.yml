@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - uses: webfactory/ssh-agent@v0.2.0
+    - uses: actions/checkout@v2
       with:
-        ssh-private-key: ${{ secrets.GHA_DEPLOY_KEY }}
+        ssh-key: ${{ secrets.GHA_DEPLOY_KEY }}
+        fetch-depth: '2'
     - name: Set up Python 3.8
       uses: actions/setup-python@v1
       with:
@@ -31,8 +31,6 @@ jobs:
         STAGING_API_KEY: ${{ secrets.STAGING_API_KEY }}
       run: |
         touch .secret.env
-        git config --local user.email "torfinn.nome+gha@gmail.com"
-        git config --local user.name "GHA"
-        git remote set-url origin "$(git config --get remote.origin.url | sed 's#http.*com/#git@github.com:#g')"
-        git pull origin master
+        git config --local user.email "github-actions-robot@usegalaxy.no"
+        git config --local user.name "Usegalaxy Robot"
         bash -x jenkins/main.sh install
