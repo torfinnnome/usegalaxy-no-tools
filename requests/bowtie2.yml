@@ -1,4 +1,6 @@
 tools:
-  - name: bowtie2
-    owner: devteam
+  - name: hisat2
+    owner: iuc
     tool_panel_section_label: Mapping
+
+
