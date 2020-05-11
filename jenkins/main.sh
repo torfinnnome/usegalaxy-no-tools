@@ -29,7 +29,7 @@ if [ $LOCAL_ENV = 1 ]; then
     # GIT_COMMIT and GIT_PREVIOUS_COMMIT are supplied by Jenkins
     # Use HEAD and HEAD~1 when running locally
     BUILD_NUMBER="local_$(date '+%Y%m%d%H%M%S')"
-    GIT_PREVIOUS_COMMIT=HEAD^;
+    GIT_PREVIOUS_COMMIT=HEAD~1;
     GIT_COMMIT=HEAD;
     LOG_DIR="logs"
     echo "Script running in local enviroment";
@@ -79,8 +79,8 @@ jenkins_tool_installation() {
   if [ $MODE = "install" ]; then
     # First check whether changed files are in the path of tool requests, that is within the requests folder but not within
     # any subfolders of requests.  If so, we run the install script.  If not we exit.
-    REQUESTS_DIFF=$(git diff --name-only --diff-filter=A $GIT_PREVIOUS_COMMIT $GIT_COMMIT | cat | grep "^requests\/[^\/]*$")
-    #REQUESTS_DIFF=$(ls requests/*yml requests/*yaml)
+    #REQUESTS_DIFF=$(git diff --name-only --diff-filter=A $GIT_PREVIOUS_COMMIT $GIT_COMMIT | cat | grep "^requests\/[^\/]*$")
+    REQUESTS_DIFF=$(ls requests/*yml requests/*yaml)
 
     # Arrange git diff into string "file1 file2 .. fileN"
     REQUEST_FILES=$REQUESTS_DIFF
