@@ -29,7 +29,7 @@ if [ $LOCAL_ENV = 1 ]; then
     # GIT_COMMIT and GIT_PREVIOUS_COMMIT are supplied by Jenkins
     # Use HEAD and HEAD~1 when running locally
     BUILD_NUMBER="local_$(date '+%Y%m%d%H%M%S')"
-    GIT_PREVIOUS_COMMIT=HEAD~1;
+    GIT_PREVIOUS_COMMIT=HEAD^;
     GIT_COMMIT=HEAD;
     LOG_DIR="logs"
     echo "Script running in local enviroment";
