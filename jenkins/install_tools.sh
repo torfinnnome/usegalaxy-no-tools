@@ -92,6 +92,8 @@ install_tools() {
     else
       SKIP_TESTS=0
     fi
+    # TODO: For new, we skip all tests.
+    SKIP_TESTS=1
 
     # Find out whether tool/owner combination already exists on galaxy.  This makes no difference to the installation process but
     # is useful for the log
