@@ -23,7 +23,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        if [ -f jenkins/requirements.txt ]; then pip install -r jenkins/requirements.txt; fi
+        if [ -f jenkins/requirements.yml ]; then pip install -r jenkins/requirements.yml; fi
     - name: Run Jenkins file
       shell: bash
       env:
