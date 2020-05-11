@@ -34,8 +34,8 @@ install_tools() {
 
   # check out master, get out of detached head (skip if running locally)
   if [ $LOCAL_ENV = 0 ]; then
-    git config --local user.name "galaxy-au-tools-jenkins-bot"
-    git config --local user.email "galaxyaustraliatools@gmail.com"
+    git config --local user.name "galaxy-no-tools-jenkins-bot"
+    git config --local user.email "galaxynorwaytools@usegalaxy.no"
     git checkout master
     git pull
   fi
