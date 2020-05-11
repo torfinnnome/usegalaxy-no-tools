@@ -30,6 +30,8 @@ jobs:
         PRODUCTION_API_KEY: ${{ secrets.PRODUCTION_API_KEY }}
         STAGING_API_KEY: ${{ secrets.STAGING_API_KEY }}
       run: |
+        pwd
+        ls -l
         touch .secret.env
         git add .
         git config --local user.email "torfinn.nome+gha@gmail.com"

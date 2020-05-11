@@ -5,4 +5,3 @@ tools:
   - name: trim_galore
     owner: bgruening
     tool_panel_section_label: FASTA/FASTQ
-
