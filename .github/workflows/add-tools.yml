@@ -13,9 +13,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: webfactory/ssh-agent@v0.2.0
-      with:
-        ssh-private-key: ${{ secrets.GHA_DEPLOY_KEY }}
     - name: Set up Python 3.8
       uses: actions/setup-python@v1
       with:
@@ -24,6 +21,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f jenkins/requirements.yml ]; then pip install -r jenkins/requirements.yml; fi
+    - name: Set up ssh-agent
+      uses: yakuhzi/action-ssh-agent@v1
+      with:
+        public: ${{ secrets.GHA_DEPLOY_PUBLIC_KEY }}
+        private: ${{ secrets.GHA_DEPLOY_KEY }}
     - name: Run Jenkins file
       shell: bash
       env:
