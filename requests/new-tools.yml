@@ -1,0 +1,7 @@
+tools:
+  - name: hisat2
+    owner: iuc
+    tool_panel_section_label: Mapping
+  - name: trim_galore
+    owner: bgruening
+    tool_panel_section_label: FASTA/FASTQ
