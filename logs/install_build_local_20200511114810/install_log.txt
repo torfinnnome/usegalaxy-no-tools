@@ -1,0 +1,1060 @@
+Running automated tool installation script
+--------------------------
+STAGING_URL = https://test.usegalaxy.no
+PRODUCTION_URL = https://usegalaxy.no
+STAGING_TOOL_DIR = test.usegalaxy.no
+PRODUCTION_TOOL_DIR = usegalaxy.no
+BUILD_NUMBER = local_20200511114810
+GIT_COMMIT = HEAD
+GIT_PREVIOUS_COMMIT = HEAD~1
+-------------------------------
+writing file tmp/install/local_20200511114810/ncbi_blast_plus@latest.yml
+Traceback (most recent call last):
+  File "scripts/is_tool_new.py", line 32, in <module>
+    main()
+  File "scripts/is_tool_new.py", line 23, in main
+    u_repos = cli.get_repositories()
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/bioblend/galaxy/toolshed/__init__.py", line 36, in get_repositories
+    return self._get()
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/bioblend/galaxy/client.py", line 128, in _get
+    status_code=r.status_code)
+bioblend.ConnectionError: HTTPSConnectionPool(host='usegalaxy.no', port=443): Max retries exceeded with url: /api/tool_shed_repositories?key=a4d452413e8fce11558132bf3e9b7660 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x10bb51908>: Failed to establish a new connection: [Errno 61] Connection refused',)), 0 attempts left: 
+
+Installing ncbi_blast_plus from file tmp/install/local_20200511114810/ncbi_blast_plus@latest.yml
+tools:
+- name: ncbi_blast_plus
+  owner: devteam
+  tool_panel_section_label: NCBI Blast
+
+Step (1): Installing ncbi_blast_plus on staging server
+Waiting for https://test.usegalaxy.no
+Waiting for https://toolshed.g2.bx.psu.edu
+shed-tools install -g https://test.usegalaxy.no -a <API_KEY> -t tmp/install/local_20200511114810/ncbi_blast_plus@latest.yml -v --log_file tmp/install/install_log.txt
+Storing log file in: tmp/install/install_log.txt
+(1/1) Installing repository ncbi_blast_plus from devteam to section "NCBI Blast" at revision 2889433c7ae1 (TRT: 0:00:01.115885)
+Timeout during install of ncbi_blast_plus, extending wait to 1h
+	repository ncbi_blast_plus installed successfully (in 0:02:11.249099) at revision 2889433c7ae1
+Installed repositories (1): [('ncbi_blast_plus', '2889433c7ae1')]
+Skipped repositories (0): []
+Errored repositories (0): []
+All repositories have been installed.
+Total run time: 0:02:12.367702
+ncbi_blast_plus has been installed on https://test.usegalaxy.no
+
+Step (2): Testing ncbi_blast_plus on staging server
+Waiting for https://test.usegalaxy.no
+shed-tools test -g https://test.usegalaxy.no -a <API_KEY> --name ncbi_blast_plus --owner devteam --revisions 2889433c7ae1 --toolshed toolshed.g2.bx.psu.edu --parallel_tests 4 --test_json logs/install_build_local_20200511114810/staging/ncbi_blast_plus@2889433c7ae1.json -v --log_file tmp/install/test_log.txt
+Storing log file in: tmp/install/test_log.txt
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-0'
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-1'
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-2'
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-3'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-2' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (blastp_sample.xml) is missing. If you use planemo try --update_test_data to generate one.
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-1' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (blastp_four_human_vs_rhodopsin.xml) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-5'
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-4'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-3' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (blastx_rhodopsin_vs_four_human.xml) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-6'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (blastp_four_human_vs_rhodopsin.xml) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-7'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-6' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (blastp_human_vs_pdb_seg_no.xml) is missing. If you use planemo try --update_test_data to generate one.
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-5' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (blastx_sample.xml) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-8'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-4' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (blastx_rhodopsin_vs_four_human.xml) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-9'
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-10'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-7' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (blastp_human_vs_pdb_seg_no.xml) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-11'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-8' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (blastn_arabidopsis.xml) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_info/0.3.3-0'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-10' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (blastn_rhodopsin_vs_three_human.xml) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_info/0.3.3-1'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-11' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (blastn_rhodopsin_vs_three_human.xml) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_info/0.3.3-2'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-9' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (blastn_arabidopsis.xml) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-0'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_info/0.3.3-2' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 852, in verify_tool
+    raise e
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 848, in verify_tool
+    job_stdio = _verify_outputs(testdef, test_history, jobs, tool_id, data_list, data_collection_list, galaxy_interactor, quiet=quiet)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 1023, in _verify_outputs
+    raise JobOutputsError(found_exceptions, job_stdio)
+galaxy.tool_util.verify.interactor.JobOutputsError: Job in error state.
+Job in error state.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-1'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_info/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 852, in verify_tool
+    raise e
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 848, in verify_tool
+    job_stdio = _verify_outputs(testdef, test_history, jobs, tool_id, data_list, data_collection_list, galaxy_interactor, quiet=quiet)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 1023, in _verify_outputs
+    raise JobOutputsError(found_exceptions, job_stdio)
+galaxy.tool_util.verify.interactor.JobOutputsError: Job in error state.
+Job in error state.
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 852, in verify_tool
+    raise e
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 848, in verify_tool
+    job_stdio = _verify_outputs(testdef, test_history, jobs, tool_id, data_list, data_collection_list, galaxy_interactor, quiet=quiet)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 1023, in _verify_outputs
+    raise JobOutputsError(found_exceptions, job_stdio)
+galaxy.tool_util.verify.interactor.JobOutputsError: Job in error state.
+Job in error state.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-2'
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-3'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_info/0.3.3-1' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 852, in verify_tool
+    raise e
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 848, in verify_tool
+    job_stdio = _verify_outputs(testdef, test_history, jobs, tool_id, data_list, data_collection_list, galaxy_interactor, quiet=quiet)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 1023, in _verify_outputs
+    raise JobOutputsError(found_exceptions, job_stdio)
+galaxy.tool_util.verify.interactor.JobOutputsError: Job in error state.
+Job in error state.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-4'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-2' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_nucs.blastdbcmd.txt) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-0'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_nucs.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-1'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-1' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_nucs.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-2'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-2' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_nucs.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-3'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-3' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_nucs.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-4'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-4' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (chimera.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-5'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-5' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (chimera.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-6'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-6' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (chimera.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-7'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-7' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (chimera.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-8'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-8' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (chimera.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-9'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-9' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (chimera.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-0'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-1'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-1' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-2'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-2' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-3'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-3' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-4'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-4' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_peptides.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-5'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-5' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-0'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_nucs.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-1'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-1' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_nucs.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-2'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-2' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_nucs.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-3'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-3' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_nucs.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-4'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-4' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_nucs.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_convert2blastmask_wrapper/0.3.3-0'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_convert2blastmask_wrapper/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins_masked.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_convert2blastmask_wrapper/0.3.3-1'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_convert2blastmask_wrapper/0.3.3-1' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins_masked.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_dustmasker_wrapper/0.3.3-0'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_dustmasker_wrapper/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (three_human_mRNA.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_dustmasker_wrapper/0.3.3-1'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_dustmasker_wrapper/0.3.3-1' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (three_human_mRNA.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_dustmasker_wrapper/0.3.3-2'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_dustmasker_wrapper/0.3.3-2' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (three_human_mRNA.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.3.3-0'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.3.3-1'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.3.3-1' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.3.3-2'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.3.3-2' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.3.3-3'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.3.3-3' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (three_human_mRNA.fasta.gz) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeprofiledb/0.3.3-0'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeprofiledb/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (cd00003.smp) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_rpsblast_wrapper/0.3.3-0'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_rpsblast_wrapper/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_rpstblastn_wrapper/0.3.3-0'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_rpstblastn_wrapper/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_nucs.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_segmasker_wrapper/0.3.3-0'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_segmasker_wrapper/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_segmasker_wrapper/0.3.3-1'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_segmasker_wrapper/0.3.3-1' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_segmasker_wrapper/0.3.3-2'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_segmasker_wrapper/0.3.3-2' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-0'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-1'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-1' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 852, in verify_tool
+    raise e
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 848, in verify_tool
+    job_stdio = _verify_outputs(testdef, test_history, jobs, tool_id, data_list, data_collection_list, galaxy_interactor, quiet=quiet)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 1023, in _verify_outputs
+    raise JobOutputsError(found_exceptions, job_stdio)
+galaxy.tool_util.verify.interactor.JobOutputsError: Job in error state.
+Job in error state.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-2'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-4' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 852, in verify_tool
+    raise e
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 848, in verify_tool
+    job_stdio = _verify_outputs(testdef, test_history, jobs, tool_id, data_list, data_collection_list, galaxy_interactor, quiet=quiet)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 1023, in _verify_outputs
+    raise JobOutputsError(found_exceptions, job_stdio)
+galaxy.tool_util.verify.interactor.JobOutputsError: Job in error state.
+Job in error state.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-3'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-1' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-4'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-2' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Executing test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastx_wrapper/0.3.3-0'
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-3' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-4' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (four_human_proteins.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastx_wrapper/0.3.3-0' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 828, in verify_tool
+    maxseconds=maxseconds)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 87, in stage_data_in_history
+    maxseconds=maxseconds))
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 373, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 303, in test_data_download
+    assert response.status_code == 200, "Test file (%s) is missing. If you use planemo try --update_test_data to generate one." % filename
+AssertionError: Test file (rhodopsin_nucs.fasta) is missing. If you use planemo try --update_test_data to generate one.
+Test 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-3' failed
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/shed_tools.py", line 361, in run_test
+    register_job_data=register, quiet=True, test_history=test_history,
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 852, in verify_tool
+    raise e
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 848, in verify_tool
+    job_stdio = _verify_outputs(testdef, test_history, jobs, tool_id, data_list, data_collection_list, galaxy_interactor, quiet=quiet)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/galaxy/tool_util/verify/interactor.py", line 1023, in _verify_outputs
+    raise JobOutputsError(found_exceptions, job_stdio)
+galaxy.tool_util.verify.interactor.JobOutputsError: Job in error state.
+Job in error state.
+Report written to '/Users/torfn/Sync/Syncthing/Torfinn/Code/Gitlab/GitHub/torfinnnome/usegalaxy-no-tools/logs/install_build_local_20200511114810/staging/ncbi_blast_plus@2889433c7ae1.json'
+Passed tool tests (0): []
+Failed tool tests (62): ['toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-2', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-1', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-3', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-6', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-5', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-4', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-7', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-8', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-10', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-11', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/blastxml_to_tabular/0.3.3-9', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_info/0.3.3-2', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_info/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_info/0.3.3-1', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-2', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-1', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-2', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-3', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-4', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-5', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-6', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-7', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-8', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.3.3-9', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-1', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-2', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-3', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-4', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3-5', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-1', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-2', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-3', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastx_wrapper/0.3.3-4', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_convert2blastmask_wrapper/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_convert2blastmask_wrapper/0.3.3-1', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_dustmasker_wrapper/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_dustmasker_wrapper/0.3.3-1', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_dustmasker_wrapper/0.3.3-2', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.3.3-1', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.3.3-2', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.3.3-3', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeprofiledb/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_rpsblast_wrapper/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_rpstblastn_wrapper/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_segmasker_wrapper/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_segmasker_wrapper/0.3.3-1', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_segmasker_wrapper/0.3.3-2', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-1', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-4', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-1', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-2', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-3', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastn_wrapper/0.3.3-4', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_tblastx_wrapper/0.3.3-0', 'toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastdbcmd_wrapper/0.3.3-3']
+Total tool test time: 0:00:32.048415
+Failed to install: Tests failed
+Winding back installation: Uninstalling on https://test.usegalaxy.no
+Uninstalling ncbi_blast_plus at revision 2889433c7ae1
+{'message': 'The repository named ncbi_blast_plus has been removed.'}
+jenkins/install_tools.sh: line 411: realpath: command not found
+jenkins/install_tools.sh: line 396: planemo: command not found
+
+Failed to install ncbi_blast_plus.
+Already up to date.
+
+0 out of        1 tools installed.
+
+Writing entry to automated_tool_installation_log.tsv
+==================================================
+Category	Build Num.	Date (AEST)	Name	New Tool	Status	Owner	Installed Revision	Requested Revision	Failing Step	Staging tests passed	Production tests passed	Section Label	Tool Shed URL	Log Path
+Install	local_20200511114810	11/05/20 19:53:01	ncbi_blast_plus		Tests failed	devteam	2889433c7ae1	latest	Staging Testing	0/62		NCBI Blast	toolshed.g2.bx.psu.edu	logs/install_build_local_20200511114810/install_log.txt
+==================================================
+rm: test.usegalaxy.no/*: No such file or directory
+rm: usegalaxy.no/*: No such file or directory
+Traceback (most recent call last):
+  File "/Users/torfn/miniconda3/bin/get-tool-list", line 8, in <module>
+    sys.exit(main())
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/get_tool_list_from_galaxy.py", line 276, in main
+    check_galaxy_version(gi)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/ephemeris/get_tool_list_from_galaxy.py", line 268, in check_galaxy_version
+    version = gi.config.get_version()
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/bioblend/galaxy/config/__init__.py", line 53, in get_version
+    return self._get(url=url)
+  File "/Users/torfn/miniconda3/lib/python3.6/site-packages/bioblend/galaxy/client.py", line 128, in _get
+    status_code=r.status_code)
+bioblend.ConnectionError: HTTPSConnectionPool(host='usegalaxy.no', port=443): Max retries exceeded with url: /api/version?key=a4d452413e8fce11558132bf3e9b7660 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x10fe8d630>: Failed to establish a new connection: [Errno 61] Connection refused',)), 0 attempts left: 
+Traceback (most recent call last):
+  File "scripts/split_tool_yml.py", line 67, in <module>
+    main()
+  File "scripts/split_tool_yml.py", line 38, in main
+    a = yaml.safe_load(open(filename, 'r'), )
+FileNotFoundError: [Errno 2] No such file or directory: 'tmp/install/tool_list.yml'
+rm: tmp/install/tool_list.yml: No such file or directory
+fatal: pathspec 'usegalaxy.no/*' did not match any files
+fatal: pathspec 'requests/example.yml' did not match any files
+diff --git a/automated_tool_installation_log.tsv b/automated_tool_installation_log.tsv
+index 7d19614..af43bca 100644
+--- a/automated_tool_installation_log.tsv
++++ b/automated_tool_installation_log.tsv
+@@ -678,3 +678,5 @@ Install	272	08/05/20 18:16:07	salmon	False	Installed	bgruening	e3d32471da11	e3d3
+ Install	274	11/05/20 10:38:27	ggplot2_point	True	Installed	iuc	87908c76ca8d	latest		1/1	1/1	Graph/Display Data	toolshed.g2.bx.psu.edu	/var/lib/jenkins/galaxy_tool_automation/install_build_274/install_log.txt
+ Install	274	11/05/20 11:03:14	sklearn_numeric_clustering	True	Installed	bgruening	1dd433d2c92c	latest		21/21	21/21	Statistics	toolshed.g2.bx.psu.edu	/var/lib/jenkins/galaxy_tool_automation/install_build_274/install_log.txt
+ >>>>>>> upstream/master
++Install	local_20200511114559	11/05/20 19:46:07	ncbi_blast_plus		Shed-tools error	devteam		latest	Staging Installation			NCBI Blast	toolshed.g2.bx.psu.edu	logs/install_build_local_20200511114559/install_log.txt
++Install	local_20200511114810	11/05/20 19:53:01	ncbi_blast_plus		Tests failed	devteam	2889433c7ae1	latest	Staging Testing	0/62		NCBI Blast	toolshed.g2.bx.psu.edu	logs/install_build_local_20200511114810/install_log.txt
+diff --git a/jenkins/main.sh b/jenkins/main.sh
+index 74f5cf9..3bc94d6 100755
+--- a/jenkins/main.sh
++++ b/jenkins/main.sh
+@@ -79,7 +79,8 @@ jenkins_tool_installation() {
+   if [ $MODE = "install" ]; then
+     # First check whether changed files are in the path of tool requests, that is within the requests folder but not within
+     # any subfolders of requests.  If so, we run the install script.  If not we exit.
+-    REQUESTS_DIFF=$(git diff --name-only --diff-filter=A $GIT_PREVIOUS_COMMIT $GIT_COMMIT | cat | grep "^requests\/[^\/]*$")
++    #REQUESTS_DIFF=$(git diff --name-only --diff-filter=A $GIT_PREVIOUS_COMMIT $GIT_COMMIT | cat | grep "^requests\/[^\/]*$")
++    REQUESTS_DIFF=$(ls requests/*yml requests/*yaml)
+ 
+     # Arrange git diff into string "file1 file2 .. fileN"
+     REQUEST_FILES=$REQUESTS_DIFF
+diff --git a/test.usegalaxy.no/fastq_quality_control.yml b/test.usegalaxy.no/fastq_quality_control.yml
+new file mode 100644
+index 0000000..005e927
+--- /dev/null
++++ b/test.usegalaxy.no/fastq_quality_control.yml
+@@ -0,0 +1,8 @@
++tools:
++- name: fastqc
++  owner: devteam
++  revisions:
++  - e7b2202befea
++  tool_panel_section_id: fastq_quality_control
++  tool_panel_section_label: FASTQ Quality Control
++  tool_shed_url: toolshed.g2.bx.psu.edu
+diff --git a/test.usegalaxy.no/mapping.yml b/test.usegalaxy.no/mapping.yml
+new file mode 100644
+index 0000000..84a9a53
+--- /dev/null
++++ b/test.usegalaxy.no/mapping.yml
+@@ -0,0 +1,22 @@
++tools:
++- name: bowtie2
++  owner: devteam
++  revisions:
++  - 749c918495f7
++  tool_panel_section_id: mapping
++  tool_panel_section_label: Mapping
++  tool_shed_url: toolshed.g2.bx.psu.edu
++- name: bwa
++  owner: devteam
++  revisions:
++  - 01ac0a5fedc3
++  tool_panel_section_id: mapping
++  tool_panel_section_label: Mapping
++  tool_shed_url: toolshed.g2.bx.psu.edu
++- name: minimap2
++  owner: iuc
++  revisions:
++  - 53c0b7a1a0c3
++  tool_panel_section_id: mapping
++  tool_panel_section_label: Mapping
++  tool_shed_url: toolshed.g2.bx.psu.edu
+diff --git a/test.usegalaxy.no/none.yml b/test.usegalaxy.no/none.yml
+new file mode 100644
+index 0000000..e25512b
+--- /dev/null
++++ b/test.usegalaxy.no/none.yml
+@@ -0,0 +1,8 @@
++tools:
++- name: data_manager_bwa_mem_index_builder
++  owner: devteam
++  revisions:
++  - 37580590ecfb
++  tool_panel_section_id: None
++  tool_panel_section_label: None
++  tool_shed_url: toolshed.g2.bx.psu.edu
+
+Pushing Changes to github
+error: pathspec 'usegalaxy.no/*' did not match any file(s) known to git
+error: pathspec 'requests/example.yml' did not match any file(s) known to git
+Everything up-to-date
+Opening new pull request for uninstalled tools:
+ncbi_blast_plus@latest.yml
+Switched to a new branch 'jenkins/uninstalled_tools_install_local_20200511114810'
+[jenkins/uninstalled_tools_install_local_20200511114810 53d5a50] Jenkins install build local_20200511114810 errors
+ 1 file changed, 4 insertions(+)
+ create mode 100644 requests/ncbi_blast_plus@latest.yml
+remote: 
+remote: Create a pull request for 'jenkins/uninstalled_tools_install_local_20200511114810' on GitHub by visiting:        
+remote:      https://github.com/torfinnnome/usegalaxy-no-tools/pull/new/jenkins/uninstalled_tools_install_local_20200511114810        
+remote: 
+To github.com:torfinnnome/usegalaxy-no-tools.git
+ * [new branch]      jenkins/uninstalled_tools_install_local_20200511114810 -> jenkins/uninstalled_tools_install_local_20200511114810
+Branch 'jenkins/uninstalled_tools_install_local_20200511114810' set up to track remote branch 'jenkins/uninstalled_tools_install_local_20200511114810' from 'origin'.
+jenkins/install_tools.sh: line 190: hub: command not found
+Switched to branch 'master'
+M	automated_tool_installation_log.tsv
+M	jenkins/main.sh
+A	test.usegalaxy.no/fastq_quality_control.yml
+A	test.usegalaxy.no/mapping.yml
+A	test.usegalaxy.no/none.yml
+Your branch is up to date with 'origin/master'.
+
+Done

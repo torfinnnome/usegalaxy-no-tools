@@ -1,0 +1,67 @@
+Running automated tool installation script
+--------------------------
+STAGING_URL = https://test.usegalaxy.no
+PRODUCTION_URL = https://usegalaxy.no
+STAGING_TOOL_DIR = test.usegalaxy.no
+PRODUCTION_TOOL_DIR = usegalaxy.no
+BUILD_NUMBER = local_20200511114559
+GIT_COMMIT = HEAD
+GIT_PREVIOUS_COMMIT = HEAD~1
+-------------------------------
+writing file tmp/install/local_20200511114559/ncbi_blast_plus@latest.yml
+usage: is_tool_new.py [-h] [-g GALAXY_URL] [-a API_KEY] [-n NAME] [-o OWNER]
+is_tool_new.py: error: argument -a/--api_key: expected one argument
+
+Installing ncbi_blast_plus from file tmp/install/local_20200511114559/ncbi_blast_plus@latest.yml
+tools:
+- name: ncbi_blast_plus
+  owner: devteam
+  tool_panel_section_label: NCBI Blast
+
+Step (1): Installing ncbi_blast_plus on staging server
+Waiting for https://test.usegalaxy.no
+Waiting for https://toolshed.g2.bx.psu.edu
+shed-tools install -g https://test.usegalaxy.no -a  -t tmp/install/local_20200511114559/ncbi_blast_plus@latest.yml -v --log_file tmp/install/install_log.txt
+usage: shed-tools install [-h] [-v] [--log_file LOG_FILE] [-g GALAXY]
+                          [-u USER] [-p PASSWORD] [-a API_KEY]
+                          [-t TOOL_LIST_FILE] [-y TOOL_YAML] [--name NAME]
+                          [--owner OWNER]
+                          [--revisions [REVISIONS [REVISIONS ...]]]
+                          [--toolshed TOOL_SHED_URL]
+                          [--install_tool_dependencies]
+                          [--skip_install_resolver_dependencies]
+                          [--skip_install_repository_dependencies] [--test]
+                          [--test_existing] [--test_json TEST_JSON]
+                          [--test_user_api_key TEST_USER]
+                          [--test_user TEST_USER]
+                          [--parallel_tests PARALLEL_TESTS]
+                          [--section TOOL_PANEL_SECTION_ID]
+                          [--section_label TOOL_PANEL_SECTION_LABEL]
+                          [--latest]
+shed-tools install: error: argument -a/--api_key: expected one argument
+jenkins/install_tools.sh: line 411: realpath: command not found
+
+Failed to install ncbi_blast_plus.
+Already up to date.
+
+0 out of        1 tools installed.
+
+Writing entry to automated_tool_installation_log.tsv
+==================================================
+Category	Build Num.	Date (AEST)	Name	New Tool	Status	Owner	Installed Revision	Requested Revision	Failing Step	Staging tests passed	Production tests passed	Section Label	Tool Shed URL	Log Path
+Install	local_20200511114559	11/05/20 19:46:07	ncbi_blast_plus		Shed-tools error	devteam		latest	Staging Installation			NCBI Blast	toolshed.g2.bx.psu.edu	logs/install_build_local_20200511114559/install_log.txt
+==================================================
+rm: test.usegalaxy.no/*: No such file or directory
+usage: get-tool-list [-h] [-v] [-g GALAXY] [-u USER] [-p PASSWORD]
+                     [-a API_KEY] -o OUTPUT [--include_tool_panel_id]
+                     [--skip_tool_panel_name] [--skip_changeset_revision]
+                     [--get_data_managers] [--get_all_tools]
+get-tool-list: error: argument -a/--api_key: expected one argument
+Traceback (most recent call last):
+  File "scripts/split_tool_yml.py", line 67, in <module>
+    main()
+  File "scripts/split_tool_yml.py", line 38, in main
+    a = yaml.safe_load(open(filename, 'r'), )
+FileNotFoundError: [Errno 2] No such file or directory: 'tmp/install/tool_list.yml'
+rm: tmp/install/tool_list.yml: No such file or directory
+rm: usegalaxy.no/*: No such file or directory
