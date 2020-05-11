@@ -33,6 +33,6 @@ jobs:
         touch .secret.env
         git config --local user.email "torfinn.nome+gha@gmail.com"
         git config --local user.name "GHA"
-        git remote set-url origin "$(git config --get remote.origin.url | sed 's#http.*com/#torfinnnome@github.com:#g')"
+        git remote set-url origin "$(git config --get remote.origin.url | sed 's#http.*com/#git@github.com:#g')"
         git pull
         bash -x jenkins/main.sh install
