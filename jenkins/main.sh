@@ -20,7 +20,7 @@ fi
 # locally or remotely at stages of development. If RUN_SCRIPT_ON_JENKINS is 0,
 # the script will only run where a .secret.env file is present. The .secret.env
 # file is necessary for loading the API keys outside of the jenkins environment
-RUN_SCRIPT_ON_JENKINS=0
+RUN_SCRIPT_ON_JENKINS=1
 SECRET_ENV_FILE=".secret.env"
 [ -f $SECRET_ENV_FILE ] && LOCAL_ENV=1 || LOCAL_ENV=0
 export LOCAL_ENV=$LOCAL_ENV
@@ -79,8 +79,8 @@ jenkins_tool_installation() {
   if [ $MODE = "install" ]; then
     # First check whether changed files are in the path of tool requests, that is within the requests folder but not within
     # any subfolders of requests.  If so, we run the install script.  If not we exit.
-    #REQUESTS_DIFF=$(git diff --name-only --diff-filter=A $GIT_PREVIOUS_COMMIT $GIT_COMMIT | cat | grep "^requests\/[^\/]*$")
-    REQUESTS_DIFF=$(ls requests/*yml requests/*yaml)
+    REQUESTS_DIFF=$(git diff --name-only --diff-filter=A $GIT_PREVIOUS_COMMIT $GIT_COMMIT | cat | grep "^requests\/[^\/]*$")
+    #REQUESTS_DIFF=$(ls requests/*yml requests/*yaml)
 
     # Arrange git diff into string "file1 file2 .. fileN"
     REQUEST_FILES=$REQUESTS_DIFF
