@@ -58,7 +58,7 @@ tools:
 - name: deseq2
   owner: iuc
   revisions:
-  - 0696db066a5b
+  - 71bacea10eee
   tool_panel_section_id: rna_seq
   tool_panel_section_label: RNA-seq
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -156,7 +156,7 @@ tools:
 - name: kallisto_quant
   owner: iuc
   revisions:
-  - 10c98fab6c5a
+  - 60f888039fb2
   tool_panel_section_id: rna_seq
   tool_panel_section_label: RNA-seq
   tool_shed_url: toolshed.g2.bx.psu.edu
