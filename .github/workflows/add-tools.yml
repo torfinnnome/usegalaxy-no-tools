@@ -33,10 +33,8 @@ jobs:
         pwd
         ls -l
         touch .secret.env
-        git add .
         git config --local user.email "torfinn.nome+gha@gmail.com"
         git config --local user.name "GHA"
-        git commit -a -m "update"
         git remote set-url origin "$(git config --get remote.origin.url | sed 's#http.*com/#git@github.com:#g')"
         eval ` ssh-agent -t 60 -s`
         echo "$GHA_DEPLOY_KEY" | ssh-add -
